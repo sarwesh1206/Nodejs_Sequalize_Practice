@@ -18,9 +18,20 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      companyId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Companies',
+          key: 'id',
+          as: 'companyId',
+        }
       }
+
     });
+
   },
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Companies');
   }
